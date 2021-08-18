@@ -21,14 +21,19 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+    - name: Maven Clean/Install
+      run: mvn clean install
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
     - name: Create .zip deployment package
       uses: thedoctor0/zip-release@master
+    - name: Create Realease archeve
+      uses: thedoctor0/zip-release@master
       with:
-        filename: 'deployment_package.zip'
-        path: LambdaHelloWorld/target/
+        type: 'zip'
+        filename: 'function.zip'
+        path: ./target
       
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
