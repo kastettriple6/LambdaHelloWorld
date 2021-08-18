@@ -23,8 +23,8 @@ jobs:
         distribution: 'adopt'
     - name: Maven Clean/Install
       run: mvn clean install
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+  #  - name: Build with Maven
+  #    run: mvn -B package --file pom.xml
     - name: Use Maven Shade Plugin
       run: mvn shade:shade
       
