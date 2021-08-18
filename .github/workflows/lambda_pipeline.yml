@@ -2,9 +2,6 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
 name: Java CI with Maven
-env: 
-    FILE_PATH: D:\a\LambdaHelloWorld\LambdaHelloWorld\target\LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
-    DEPLOYMENT_PACKAGE_NAME: lambda_deployment.zip
 
 on:
   push:
@@ -38,4 +35,4 @@ jobs:
        aws-region: ${{ secrets.AWS_REGION }}
    
     - name: Deploy Lambda function
-      run: aws lambda update-function-code --function-name my-function-hello-world --zip-file fileb://${{ env.FIL_PATH }}
+      run: aws lambda update-function-code --function-name my-function-hello-world --zip-file fileb://D:\a\LambdaHelloWorld\LambdaHelloWorld\target\LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
