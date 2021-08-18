@@ -24,12 +24,12 @@ jobs:
     - name: Maven Clean/Install
       run: mvn clean install
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn package
       
     - name: Create Realease archeve
       uses: papeloto/action-zip@v1
       with:
-          files: target/*shaded.jar
+          files: target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
           dest: deployment_package.zip
         
     - name: Configure AWS Credentials
