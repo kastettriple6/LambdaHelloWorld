@@ -3,7 +3,7 @@
 
 name: Java CI with Maven
 env: 
-    FILE_PATH: home/runner/work/LambdaHelloWorld/LambdaHelloWorld/target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
+    FILE_PATH: D:\a\LambdaHelloWorld\LambdaHelloWorld\target\LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
     DEPLOYMENT_PACKAGE_NAME: lambda_deployment.zip
 
 on:
@@ -38,4 +38,4 @@ jobs:
        aws-region: ${{ secrets.AWS_REGION }}
    
     - name: Deploy Lambda function
-      run: aws lambda update-function-code --function-name my-function-hello-world --zip-file fileb://D:\a\LambdaHelloWorld\LambdaHelloWorld\target\LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
+      run: aws lambda update-function-code --function-name my-function-hello-world --zip-file fileb://${{ env.FIL_PATH }}
