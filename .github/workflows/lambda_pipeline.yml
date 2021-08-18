@@ -32,7 +32,7 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         filename: '${{ env.DEPLOYMENT_PACKAGE_NAME }}'
-        path: '*target/*shaded.jar'
+        path: './target/*shaded.jar'
         exclusions: '*.git* /*node_modules/* .editorconfig'   
         
     - name: Configure AWS Credentials
