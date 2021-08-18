@@ -25,7 +25,10 @@ jobs:
       run: mvn -B package --file pom.xml
       
     - name: Create .zip deployment package
-      run: zip –r function.zip target
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: 'deployment_package.zip'
+        path: LambdaHelloWorld/target/
       
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
