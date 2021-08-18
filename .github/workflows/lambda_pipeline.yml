@@ -28,11 +28,12 @@ jobs:
     - name: Build with Maven
       run: mvn package
       
-    - name: Create Realease archeve
-      uses: papeloto/action-zip@v1
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
       with:
-          files: LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
-          dest: ${{ env.DEPLOYMENT_PACKAGE_NAME }}
+        filename: '${{ env.DEPLOYMENT_PACKAGE_NAME }}'
+        path: './*/target/*shaded.jar'
+        exclusions: '*.git* /*node_modules/* .editorconfig'   
         
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
