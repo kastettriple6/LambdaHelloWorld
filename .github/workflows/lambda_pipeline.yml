@@ -27,9 +27,6 @@ jobs:
         
     - name: Build with Maven
       run: mvn package
-      
-    - name: Archive Release
-      run: zip -r lambda_deployment.zip . -i ./target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
         
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -41,7 +38,7 @@ jobs:
     - name: Deploy Lambda function
       uses: yvesgurcan/deploy-lambda-function@v0.0.5
       with:
-       package: ${{ env.DEPLOYMENT_PACKAGE_NAME }}
+       package: LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
        function-name: ${{ secrets.AWS_FUNCTION_NAME }}
        AWS_REGION: ${{ secrets.AWS_REGION }}
        AWS_SECRET_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
