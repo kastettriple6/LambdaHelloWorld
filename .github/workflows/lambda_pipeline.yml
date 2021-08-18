@@ -24,6 +24,8 @@ jobs:
     - name: Maven Clean/Install
       run: mvn clean install
     - name: Build with Maven
+      run: mvn -B package --file pom.xml
+    - name: Use Maven Shade Plugin
       run: mvn shade:shade
       
     - name: Create .zip deployment package
@@ -33,6 +35,7 @@ jobs:
       with:
         type: 'zip'
         exclusions: '*.git*'
+        
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
