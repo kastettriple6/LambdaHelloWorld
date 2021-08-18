@@ -37,5 +37,7 @@ jobs:
        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
        aws-region: ${{ secrets.AWS_REGION }}
        
+    - run: cd /home/runner/work/LambdaHelloWorld/
+       
     - name: Deploy Lambda function
       run: aws lambda update-function-code --function-name my-function-hello-world --zip-file fileb://./target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
