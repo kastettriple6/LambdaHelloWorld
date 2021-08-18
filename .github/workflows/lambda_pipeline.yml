@@ -24,15 +24,14 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Maven Clean/Install
-      run: mvn clean install
+        
     - name: Build with Maven
       run: mvn package
       
     - name: Create Realease archeve
       uses: papeloto/action-zip@v1
       with:
-          files: ${{ env.FILE_PATH }}
+          files: LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
           dest: ${{ env.DEPLOYMENT_PACKAGE_NAME }}
         
     - name: Configure AWS Credentials
