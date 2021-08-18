@@ -24,7 +24,7 @@ jobs:
     - name: Maven Clean/Install
       run: mvn clean install
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn shade:shade
       
     - name: Create .zip deployment package
       uses: thedoctor0/zip-release@master
@@ -32,8 +32,8 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: 'function.zip'
-      
+        exclusions: '*.git*
+
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -44,7 +44,7 @@ jobs:
     - name: Deploy Lambda function
       uses: yvesgurcan/deploy-lambda-function@v0.0.5
       with:
-       package: function.zip
+       package: release.zip
        function-name: ${{ secrets.AWS_FUNCTION_NAME }}
        AWS_REGION: ${{ secrets.AWS_REGION }}
        AWS_SECRET_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
