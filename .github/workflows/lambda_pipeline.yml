@@ -2,6 +2,9 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
 name: Java CI with Maven
+env: 
+    FILE_PATH: home/runner/work/LambdaHelloWorld/LambdaHelloWorld/target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
+    DEPLOYMENT_PACKAGE_NAME: lambda_deployment.zip
 
 on:
   push:
@@ -29,8 +32,8 @@ jobs:
     - name: Create Realease archeve
       uses: papeloto/action-zip@v1
       with:
-          files: LambdaHelloWorld/target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
-          dest: deployment_package.zip
+          files: ${{ env.FILE_PATH }}
+          dest: ${{ env.DEPLOYMENT_PACKAGE_NAME }}
         
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -42,7 +45,7 @@ jobs:
     - name: Deploy Lambda function
       uses: yvesgurcan/deploy-lambda-function@v0.0.5
       with:
-       package: deployment_package.zip
+       package: ${{ env.DEPLOYMENT_PACKAGE_NAME }}
        function-name: ${{ secrets.AWS_FUNCTION_NAME }}
        AWS_REGION: ${{ secrets.AWS_REGION }}
        AWS_SECRET_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
