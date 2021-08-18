@@ -29,7 +29,7 @@ jobs:
     - name: Create Realease archeve
       uses: papeloto/action-zip@v1
       with:
-          files: ./target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
+          files: LambdaHelloWorld/target/LambdaHelloWorld-1.0-SNAPSHOT-shaded.jar
           dest: deployment_package.zip
         
     - name: Configure AWS Credentials
