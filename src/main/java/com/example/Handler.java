@@ -8,6 +8,6 @@ import java.util.Map;
 public class Handler implements RequestHandler<Map<String,Object>, String> {
     @Override
     public String handleRequest(Map<String, Object> stringObjectMap, Context context) {
-        return "Hello World";
+        return "Hello World AWS";
     }
 }
