@@ -26,13 +26,11 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
-    - name: Create .zip deployment package
-      uses: thedoctor0/zip-release@master
     - name: Create Realease archeve
-      uses: thedoctor0/zip-release@master
+      uses: papeloto/action-zip@v1
       with:
-        type: 'zip'
-        exclusions: '*.git*'
+          files: target/*shaded.jar
+          dest: deployment_package.zip
         
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -44,7 +42,7 @@ jobs:
     - name: Deploy Lambda function
       uses: yvesgurcan/deploy-lambda-function@v0.0.5
       with:
-       package: release.zip
+       package: deployment_package.zip
        function-name: ${{ secrets.AWS_FUNCTION_NAME }}
        AWS_REGION: ${{ secrets.AWS_REGION }}
        AWS_SECRET_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
