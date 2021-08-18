@@ -33,7 +33,6 @@ jobs:
       with:
         type: 'zip'
         filename: 'function.zip'
-        path: ./target
       
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
