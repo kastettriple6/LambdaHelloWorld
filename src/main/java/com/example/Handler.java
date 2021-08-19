@@ -15,7 +15,7 @@ public class Handler implements RequestHandler<Map<String, Object>, AirtableReco
     private final String APP = props.getProperty("airtable.api.app");
     private final String FIRST_RECORD = props.getProperty("airtable.record.index.0");
     private final AirtableApi API = new AirtableApi(KEY);
-    private final AirtableTable TABLE = API.base(APP).table("MainTable.csv");
+    private final AirtableTable TABLE = API.base(APP).table("MainTable");
 
     @Override
     public AirtableRecord handleRequest(Map<String, Object> stringObjectMap, Context context) {
