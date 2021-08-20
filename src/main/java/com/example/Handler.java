@@ -25,7 +25,6 @@ public class Handler implements RequestHandler<Map<String, Object>, AirtableReco
             int i = 0;
             while (i < table.list().size()) {
                 int j = i;
-
                 for (int k = 0; k < 3; k++) {
                     if (j == table.list().size()) {
                         j = 0;
