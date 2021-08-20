@@ -20,7 +20,6 @@
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-core:1.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-lambda-java-events:3.9.0" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.6" level="project" />
-    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.7" level="project" />
     <orderEntry type="library" name="Maven: dev.fuxing:airtable-api:0.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.9" level="project" />
@@ -32,11 +31,5 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.4" level="project" />
   </component>
 </module>
