@@ -10,12 +10,11 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Handler implements RequestHandler<String, String> {
-    InputStream is;
 
     @Override
     public String handleRequest(String s, Context context) {
         Properties props = new Properties();
-        is = getClass().getClassLoader().getResourceAsStream("config.properties");
+        InputStream is = getClass().getClassLoader().getResourceAsStream("config.properties");
         try {
             props.load(is);
         } catch (IOException e) {
