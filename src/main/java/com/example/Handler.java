@@ -33,36 +33,35 @@ public class Handler implements RequestHandler<Map<String, Object>, String> {
         AirtableTable table = base.table(tableId);
 
         String printing = "";
-        try {
-            while (true) {
-                int i = 0;
-                while (i < table.list().size()) {
-                    int j = i;
-                    for (int k = 0; k < 3; k++) {
-                        if (j == table.list().size()) {
-                            j = 0;
-                        }
+
+        while (true) {
+            int i = 0;
+            while (i < table.list().size()) {
+                int j = i;
+                for (int k = 0; k < 3; k++) {
+                    if (j == table.list().size()) {
+                        j = 0;
+                    }
+                    try {
                         JsonNode response = table.list(querySpec -> {
                             querySpec.sort("ID");
                             querySpec.fields("title");
                         })
                                 .get(j).getField("title");
-                        printing = response.toPrettyString();
                         System.out.println(printing);
-                        j++;
-                    }
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
+                        return response.toPrettyString();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-
-                    i++;
+                    j++;
                 }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                i++;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return printing;
     }
 }
