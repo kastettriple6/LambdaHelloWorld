@@ -5,5 +5,5 @@ Resources:
       Timeout: 300
       MemorySize: 128
       Handler: com.example.Handler
-      CodeUri: s3://cf-templates-1k50evuwwqhqh-eu-central-1/57b8e048e3d1971e95346160b1bf8ece
+      CodeUri: s3://cf-templates-1k50evuwwqhqh-eu-central-1/9c851cd8d451cd6e87a781afeaad3978
       Runtime: java11
